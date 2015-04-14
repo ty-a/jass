@@ -1,0 +1,42 @@
+ol {
+	list-style-type:none;
+}
+
+.submission-title {
+	font-size:40px;
+}
+
+.well {
+	padding-top:0px;
+}
+
+input#inputTitle, textarea#inputContent, input#inputUserName, input#inputPassword {
+	width:100%;
+	margin-bottom:6px;
+}
+
+textarea {
+	resize: none;
+}
+
+.center{
+	margin:0px auto;
+}
+
+/*
+	CSS From the BootStrap Tutorials
+*/
+.form-signin {
+	max-width: 330px;
+	padding: 15px;
+	margin: 0 auto;
+}
+
+.bg-danger {
+	font-size:25px;
+}
+
+.bg-success {
+	font-size:25px;
+}
+
