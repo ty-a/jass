@@ -8,8 +8,7 @@ session_start();
 $autoLoadClasses = array(
 	'config.php',
 	'includes/Header.php',
-	'includes/GlobalFunctions.php',
-	'includes/User.php'
+	'includes/GlobalFunctions.php'
 );
 
 foreach($autoLoadClasses as $class) {

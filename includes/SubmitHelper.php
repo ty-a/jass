@@ -2,7 +2,7 @@
 
 	function addSubmission( $title, $content, $db_handler ) {
 		// http://php.net/manual/en/mysqli.quickstart.prepared-statements.php
-		if(!($prepared_statement = $db_handler->prepare("INSERT INTO submissions(title, content, userId) VALUES(?,?,?)"))) {
+		if(!($prepared_statement = $db_handler->prepare("INSERT INTO submissions(title, content, userId, submissionDate) VALUES(?,?,?,CURDATE())"))) {
 			displayErrorMessage("Database error, please try again later.");
 			return false;
 		} // end prepare sql statement 
