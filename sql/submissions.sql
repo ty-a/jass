@@ -3,5 +3,6 @@ CREATE TABLE IF NOT EXISTS submissions(
 	title varchar(15) NOT NULL,
 	content varchar(300) NOT NULL,
 	userId int NOT NULL,
+	submissionDate date NOT NULL,
 	FOREIGN KEY (userId) REFERENCES user(userId)
 );

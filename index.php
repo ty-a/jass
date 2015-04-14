@@ -1,26 +1,52 @@
 <!DOCTYPE html>
 <?php
 require_once("includes/AutoLoader.php");
+require_once("includes/IndexHelper.php");
 displayHeader( "Home" );
+
+// maximum amount of submissions per page, default 10
+if(isset($_GET['limit']) && $_GET['limit'] < 100 && $_GET['limit'] > 0 ) {
+	$limit = $_GET['limit'];
+} else {
+	$limit = 10;
+}
+
+// if user provides a offset, use that
+if(isset($_GET['offset']) && $_GET['offset'] > -1) {
+	$offset = $_GET['offset'];
+} else {
+	$offset = 0;
+}
+
+if(isset($_GET['id'])) {
+	$limit = 1;
+	$offset = $_GET['id'] - 1;
+}
+
+$submissions = get_submissions($offset, $limit);
+
+
 ?>
 	<div class="container">
 	
 	<ol id="submission-list" class="feed">
-		<li class="well">
-			<h2 class="submission-title">Title</h2>
-			
-			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi eu leo dictum, placerat ante id, lacinia mauris. Vivamus sed sem nisi. Vestibulum volutpat, arcu convallis vehicula consequat, leo nulla sodales arcu, non ullamcorper nunc ante in odio. Duis sodales enim elit, ut congue dui pharetra at. Proin consectetur dapibus nulla non maximus. Nullam nec ipsum in sapien vestibulum volutpat nec et sem. Proin pretium lacinia lectus. Fusce auctor at risus eu varius. Nullam non quam cursus orci tristique commodo. Vestibulum lorem ipsum, tincidunt in commodo at, porta non lorem. Ut lobortis purus non neque tempor facilisis. Donec mattis neque nec eros malesuada mattis. Sed cursus lobortis rhoncus. Integer finibus urna quis tristique congue. Ut ultrices mattis enim, quis blandit justo porttitor rhoncus.</p>
-			
-			<div class="text-muted text-right">-- Author Name, date</div>
-			
-			<p class="text-right;"><a href="/submission.php?id=x" title="Permalink">Permalink</a></p>
-		
-		</li>
+	
+		<?php 
+		foreach($submissions as $submission) {
+			show_submission(
+				$submission["submissionId"], 
+				get_username_from_userid($submission["userId"]),
+				$submission["title"],
+				$submission["content"],
+				$submission["date"]
+			);
+		}
+		?>
 	</ol>
 		<nav>
 			<ul class="pager">
-				<li><a href="#">Previous</a></li>
-				<li><a href="#">Next</a></li>
+				<li><a href="?offset=<?php echo($offset - $limit); ?>&limit=<?php echo($limit); ?>">Previous</a></li>
+				<li><a href="?offset=<?php echo($offset + $limit); ?>&limit=<?php echo($limit); ?>">Next</a></li>
 			</ul>
 		</nav>
 	</div>
