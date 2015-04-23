@@ -19,3 +19,5 @@
 				</div>
 			</form>
 		</div>
+<?php
+displayFooter();

@@ -44,6 +44,5 @@
 				<p class="text-center">Don't have an account? <a href="signup.php">Sign up for one!</a></p>
 			</form>
 		</div>
-	<?php } ?>
-</body>
-</html>
+	<?php }
+displayFooter();

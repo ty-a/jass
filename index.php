@@ -50,11 +50,5 @@ $submissions = get_submissions($offset, $limit);
 			</ul>
 		</nav>
 	</div>
-	<footer class="footer">
-		<div class="container">
-			<p class="text-muted">JASS was created for a school DB project. Ironically, the DB is the smallest part of the project.</p>
-		</div>
-	</footer>
-	
-</body>
-</html>
+<?php
+displayFooter();

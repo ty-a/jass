@@ -14,7 +14,5 @@
 			</ul>
 
 		</div>
-	<?php  
-	?>
-	</body>
-</html>
+<?php
+displayFooter();

@@ -57,7 +57,5 @@ displayHeader("Signup");
 			<button class="btn btn-lg btn-primary btn-block" type="submit" formmethod="post">Login</button>
 		</form>
 	</div>
-	<?php } ?>
-	
-</body>
-</html>
+	<?php }
+displayFooter();
