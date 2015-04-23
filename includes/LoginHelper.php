@@ -20,7 +20,7 @@
 	
 	function performLogin( $username, $password, $db_handler ) {
 		// http://php.net/manual/en/mysqli.quickstart.prepared-statements.php
-		if(!($prepared_statement = $db_handler->prepare("SELECT userId, password FROM user WHERE userName = ?"))) {
+		if(!($prepared_statement = $db_handler->prepare("SELECT userId, password, isAdmin FROM user WHERE userName = ?"))) {
 			displayErrorMessage("Database error, please try again later.");
 			return false;
 		} // end prepare sql statement 
@@ -41,7 +41,7 @@
 			displayErrorMessage("Username does not exist, <a href=\"login.php\">please try again.</a>");
 			return false;
 		}
-		$prepared_statement->bind_result($userId, $password_from_db);
+		$prepared_statement->bind_result($userId, $password_from_db, $isAdmin);
 		$prepared_statement->fetch();
 		if(!password_verify($password, $password_from_db)) {
 			displayErrorMessage("Invalid password, <a href=\"login.php\">please try again.</a>");
@@ -50,6 +50,7 @@
 			$_SESSION['username'] = $username;
 			$_SESSION['userId'] = $userId;
 			$_SESSION['isLoggedIn'] = true;
+			$_SESSION['isAdmin'] = $isAdmin;
 		}
 		return true;
 	}
