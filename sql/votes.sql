@@ -4,5 +4,5 @@ CREATE TABLE IF NOT EXISTS votes(
 	vote int NOT NULL,
 	PRIMARY KEY(submissionId, userId),
 	FOREIGN KEY (userId) REFERENCES user(userId),
-	FOREIGN KEY (submissionId) REFERENCES submissions(submissionId)
+	FOREIGN KEY (submissionId) REFERENCES submissions(submissionId) ON DELETE CASCADE
 );
