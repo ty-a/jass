@@ -3,6 +3,10 @@
 <?php
 		require_once("includes/AutoLoader.php");
 		displayHeader( "Admin" );
+		if(!isset($_SESSION['isAdmin']) || !$_SESSION['isAdmin']) { //gives error message if not admin
+		displayErrorMessage( "You are not allowed to view this page.");
+	} elseif (isset($_SESSION['isAdmin']) && $_SESSION['isAdmin']) { //if admin it will show the page
+	
 	?> 
 	
 	<div class="container">
@@ -20,4 +24,5 @@
 			</form>
 		</div>
 <?php
+	}
 displayFooter();
