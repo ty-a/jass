@@ -51,6 +51,5 @@
 			</form>
 		</div>
 	<?php } 
-	}?>
-	</body>
-</html>
+	}
+displayFooter();
