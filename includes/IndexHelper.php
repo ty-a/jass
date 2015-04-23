@@ -22,7 +22,7 @@
 		$db_handler = new mysqli($db_host, $db_user, $db_password, $db_name);
 		
 		// totes sql injection problem spot, should totes fix later
-		$sql = "SELECT * FROM submissions WHERE submissionId > " . $offset . " LIMIT " . $limit;
+		$sql = "SELECT submissionId, title, content, userName, submissionDate FROM submissions, user WHERE user.userId = submissions.userId AND submissionId > " . $offset . " LIMIT " . $limit;
 		
 		if($result = $db_handler->query($sql)) {
 			
@@ -31,7 +31,7 @@
 					"submissionId" => $row[0],
 					"title" => $row[1],
 					"content" => $row[2],
-					"userId" => $row[3],
+					"userName" => $row[3],
 					"date" => $row[4]
 				);
 			}

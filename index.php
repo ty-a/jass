@@ -35,7 +35,7 @@ $submissions = get_submissions($offset, $limit);
 		foreach($submissions as $submission) {
 			show_submission(
 				$submission["submissionId"], 
-				get_username_from_userid($submission["userId"]),
+				$submission["userName"],
 				$submission["title"],
 				$submission["content"],
 				$submission["date"]
