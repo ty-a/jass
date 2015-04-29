@@ -2,7 +2,7 @@
 <?php
 require_once("includes/AutoLoader.php");
 require_once("includes/IndexHelper.php");
-displayHeader( "Home" );
+displayHeader( "Home", true );
 
 // maximum amount of submissions per page, default 10
 if(isset($_GET['limit']) && $_GET['limit'] < 100 && $_GET['limit'] > 0 ) {
@@ -38,7 +38,8 @@ $submissions = get_submissions($offset, $limit);
 				$submission["userName"],
 				$submission["title"],
 				$submission["content"],
-				$submission["date"]
+				$submission["date"],
+				$submission["count"]
 			);
 		}
 		?>

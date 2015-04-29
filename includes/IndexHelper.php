@@ -1,6 +1,6 @@
 <?php
 
-	function show_submission($content_id, $username, $content_title, $content, $date) {
+	function show_submission($content_id, $username, $content_title, $content, $date, $score) {
 		?><li class="well">
 			<h2 class="submission-title"><?php echo($content_title) ?></h2>
 			
@@ -8,7 +8,7 @@
 			
 			<div class="text-muted text-right">-- <?php echo($username) ?>, <?php echo($date) ?></div>
 			
-			<p class="text-right;"><a href="/index.php?id=<?php echo($content_id)?>" title="Permalink">Permalink</a></p>
+			<p class="text-right;"><a href="/index.php?id=<?php echo($content_id)?>" title="Permalink">Permalink</a> &bull; <a href="javascript:vote( <?php echo($content_id); ?>, 'up');">I like this</a> &bull; <a href="javascript:vote( <?php echo($content_id); ?>, 'down');">I dislike this</a> &bull; Current Score: <span id="<?php echo($content_id); ?>-vote-count"><?php echo($score); ?></span></p>
 		
 		</li><?php
 		
@@ -32,7 +32,8 @@
 					"title" => $row[1],
 					"content" => $row[2],
 					"userName" => $row[3],
-					"date" => $row[4]
+					"date" => $row[4],
+					"count" => get_submission_vote_count($row[0])
 				);
 			}
 		}

@@ -46,3 +46,22 @@
 		
 		return $username;
 	}
+	
+	function get_submission_vote_count($submissionId) {
+		global $db_host, $db_user, $db_password, $db_name;
+		$db_handler = new mysqli($db_host, $db_user, $db_password, $db_name);
+		
+		// totes sql injection problem spot, should totes fix later
+		$sql = "SELECT sum(vote) FROM votes WHERE submissionId = " . $submissionId;
+
+		if($result = $db_handler->query($sql)) {
+			$row = $result->fetch_row();
+			$count = $row[0];
+		}
+		
+		if(empty($count)) {
+			$count = 0;
+		}
+		
+		return $count;
+	}
