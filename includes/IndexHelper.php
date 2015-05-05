@@ -4,7 +4,9 @@
 		?><li class="well">
 			<h2 class="submission-title"><?php echo($content_title) ?></h2>
 			
-			<p><?php echo($content) ?></p>
+			<?php $wordWrapContent = wordwrap($content, 180, "<br />\n",true); ?>
+			<p><?php echo($wordWrapContent) ?></p>
+			
 			
 			<div class="text-muted text-right">-- <?php echo($username) ?>, <?php echo($date) ?></div>
 			

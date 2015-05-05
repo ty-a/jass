@@ -27,9 +27,11 @@
 					$hasError = true;
 				}
 			}
-							
+			$oldUser = $_POST['oldUserName'];
+			$newUser = $_POST['newUserName'];
 			if(!$hasError) {
-				$id = renameAccount($_POST['oldUserName'], $_POST['newUserName'],  $db_handler);
+				$id = renameAccount($oldUser, $newUser,  $db_handler);
+				$id = Logger($_SESSION['userId'], $oldUser." was renamed to ".$newUser,  $db_handler);
 				
 				if($id !== false ) {
 					displaySuccessMessage("User was successfully renamed.");

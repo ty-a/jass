@@ -9,7 +9,8 @@ $autoLoadClasses = array(
 	'config.php',
 	'includes/Header.php',
 	'includes/Footer.php',
-	'includes/GlobalFunctions.php'
+	'includes/GlobalFunctions.php',
+	'includes/Logger.php'
 );
 
 foreach($autoLoadClasses as $class) {

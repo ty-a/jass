@@ -24,6 +24,7 @@
 							
 			if(!$hasError) {
 				$id = deleteSubmission($_POST['submissionID'],  $db_handler);
+				$id = Logger($_SESSION['userId'], $_POST['submissionID']." was deleted.",  $db_handler);
 				
 				if($id !== false ) {
 					displaySuccessMessage("Submission successfully deleted");

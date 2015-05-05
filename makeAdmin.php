@@ -4,6 +4,7 @@
 		require_once("includes/makeAdminHelper.php");
 		
 		displayHeader( "Admin" );
+	
 		if(!isset($_SESSION['isAdmin']) || !$_SESSION['isAdmin']) { //gives error message if not admin
 		displayErrorMessage( "You are not allowed to view this page.");
 	} elseif (isset($_SESSION['isAdmin']) && $_SESSION['isAdmin']) { //if admin it will show the page
@@ -21,15 +22,19 @@
 					$hasError = true;
 				}
 			}
+			$userName = $_POST['userName'];
 							
 			if(!$hasError) {
-				$id = makeAdmin($_POST['userName'],  $db_handler);
+				$id = makeAdmin($userName,  $db_handler);
+				$id = Logger($_SESSION['userId'], $userName." was promoted to admin.",  $db_handler);
+				
 				
 				if($id !== false ) {
 					displaySuccessMessage("User was successfully made an admin.");
 				} 
 			}
 		} 
+		
 	?> 		
 	
 		<div class="container">
