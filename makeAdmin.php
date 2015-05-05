@@ -26,7 +26,7 @@
 							
 			if(!$hasError) {
 				$id = makeAdmin($userName,  $db_handler);
-				$id = Logger($_SESSION['userId'], $userName." was promoted to admin.",  $db_handler);
+				$id = Logger($_SESSION['userId'], $userName." was promoted to admin",  $db_handler);
 				
 				
 				if($id !== false ) {

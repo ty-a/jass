@@ -33,20 +33,19 @@ $logs = get_logs($offset, $limit);
 ?>
 	<div class="container">
 	
-	<ol id="logs-list" class="feed">
+	<ul id="logs-list" class="feed">
 	
 		<?php 
 		foreach($logs as $logs) {
 			show_logs(
 				$logs["logID"], 
 				$logs["userName"],
-				$logs["userName"],
 				$logs["action"]
 				
 			);
 		}
 		?>
-	</ol>
+	</ul>
 		<nav>
 			<ul class="pager">
 				<li><a href="?offset=<?php echo($offset - $limit); ?>&limit=<?php echo($limit); ?>">Previous</a></li>

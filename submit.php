@@ -30,6 +30,7 @@
 				$id = addSubmission($_POST['title'], $_POST['content'], $db_handler);
 				
 				if( $id != 0 && $id !== false ) {
+					Logger($_SESSION['userId'], "created new submission id " . $id,  $db_handler);
 					displaySuccessMessage("Submission successfully submitted! It can be viewed at <a href=\"index.php?id=" . $id . "&limit=1\">here</a>");
 				} 
 			}

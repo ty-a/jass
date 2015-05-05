@@ -25,7 +25,7 @@
 			$User = $_POST['userName'];				
 			if(!$hasError) {
 				$id = disableAccount($User,  $db_handler);
-				$id = Logger($_SESSION['userId'], $User." was disabled.",  $db_handler);
+				$id = Logger($_SESSION['userId'], $User." was disabled",  $db_handler);
 				
 				if($id !== false ) {
 					displaySuccessMessage("User account was successfully disabled.");
